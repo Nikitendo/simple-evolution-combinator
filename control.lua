@@ -123,7 +123,11 @@ local function on_gui_opened(event)
   end
 
   local opened = player.opened
-  if opened and opened.valid and opened.name == ENTITY_NAME then
+  if not opened then
+    return
+  end
+
+  if opened.object_name == "LuaEntity" and opened.valid and opened.name == ENTITY_NAME then
     player.opened = nil
   end
 end
